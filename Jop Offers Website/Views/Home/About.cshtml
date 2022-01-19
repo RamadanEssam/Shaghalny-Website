@@ -1,0 +1,119 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+
+
+<section class="triangle text-center">
+    <div class="text-white py-3">
+        <h3>
+            موقع شغلنى يوفر فرص عمل ووظائف
+        </h3>
+        <p>
+            لمختلف المؤهلات والتخصصات في أكبر شركات مصر
+        </p>
+    </div>
+</section>
+<div class="text-center text-dark py-4 bg-light">
+    <p>
+        يساعد شغلنى أكثر من 9,500 شركة في البحث عن موظفين و 1,400,000 شخص في البحث عن وظائف
+    </p>
+</div>
+
+<!-----------------------------------------------------start how it work--------------------------------------------->
+<section class="how-work bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12  text-center">
+                <h3> كيف <span>يعمل</span></h3>
+                <p>ماذا تفعل حتى تحصل على الوظيفة</p>
+            </div>
+            <div class="col-md-4 col-xs-12">
+                <div class="col-xs-12 item">
+                    <i class="fa fa-search"></i>
+                    <h4 class="col-xs-12">أبحث عن وظيفة</h4>
+                    <p class="col-xs-12">
+                        لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو
+                        أيوسمود تيمبور
+                        أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا
+                    </p>
+                </div>
+                <div class="col-xs-12 item">
+                    <i class="fa fa-address-book"></i>
+                    <h4 class="col-xs-12">تقدم اليها</h4>
+                    <p class="col-xs-12">
+                        لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو
+                        أيوسمود تيمبور
+                        أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا
+                    </p>
+                </div>
+                <div class="col-xs-12 item">
+                    <i class="fa fa-user"></i>
+
+                    <h4 class="col-xs-12">عمل المقابلة</h4>
+                    <p class="col-xs-12">
+                        لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو
+                        أيوسمود تيمبور
+                        أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12 text-center">
+                <img src="/images/PikPng.com_construction-worker-png_626969.png"  class="img-responsive w-75"/>
+            </div>
+            <div class="col-md-4 col-xs-12 ">
+                <div class="col-xs-12 item">
+                    <i class="fa fa-file"></i>
+                    <h4 class="col-xs-12">ابداء العمل</h4>
+                    <p class="col-xs-12">
+                        لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو
+                        أيوسمود تيمبور
+                        أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا
+                    </p>
+                </div>
+                <div class="col-xs-12 item">
+                    <i class="fa fa-money"></i>
+                    <h4 class="col-xs-12">اربح المال</h4>
+                    <p class="col-xs-12">
+                        لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو
+                        أيوسمود تيمبور
+                        أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا
+                    </p>
+                </div>
+                <div class="col-xs-12 item">
+                    <i class="fa fa-smile-o"></i>
+
+                    <h4 class="col-xs-12">كن سعيد</h4>
+                    <p class="col-xs-12">
+                        لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو
+                        أيوسمود تيمبور
+                        أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-------------------------------------end how it work--------------------------------------------------->
+<div class="row mx-0 py-3 bg-light">
+    <div class="col-md-6 col-11 mx-auto row">
+        <div class="col">
+            @*<img src="/images/pexels-chevanon-photography-1108101.jpg" class=" rounded-circle mx-auto w-100" style=""/>*@
+            <img src="/images/about-jobseeker.png"  class="w-100 h-100"/>
+        </div>
+        <div class="col d-flex flex-column justify-content-center ">
+            <div class="">
+
+                <h4>اذاكنت باحث اوناشر؟</h4>
+                <p>يمكنك من خلال موقعنا نشر الوظائف اذ كنت ناشر او البحث عن الوظيفه ان كنت باحث بعد التسجيل فى الموقع</p>
+                @Html.ActionLink("سجل الان", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-warning mb-1", id = "registerLink" })
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white">
+    @Html.Partial("_SuccessPartners")
+</div>

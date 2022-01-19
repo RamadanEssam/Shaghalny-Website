@@ -1,0 +1,129 @@
+﻿@model Jop_Offers_Website.Models.EditeProfileViewModel
+
+@{
+    ViewBag.Title = "EditeProfile";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<div class="container">
+
+    <div class="row py-3">
+        <div class="col-md-10 col-lg-8 mx-auto py-md-4 px-md-5  my-md-3  myformstyle">
+
+            @using (Html.BeginForm("EditeProfile", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="text-center my-2">
+                    <img src="~/Uploads/users/@Model.image" class="rounded-circle editepageimg" />
+                </div>
+                <h5 class="text-center">تعديل بياناتك الشخصيه</h5>
+                if (ViewBag.message != null)
+                {
+                    if (ViewBag.message == "تم تعديل حسابك بنجاح")
+                    {
+                        <div class="alert-success py-2 text-center">
+                            <span>@ViewBag.message</span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert-danger py-2 text-center">
+                            <span>@ViewBag.message</span>
+                        </div>
+                    }
+                }
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.image)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md" })
+                    <div class="col-md">
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control inputborder" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md">
+                        @Html.LabelFor(m => m.Governorate, new { @class = "col-md control-label" })
+                        <div class="col-md">
+                            @Html.DropDownList("Governorate", null, new { @class = "form-control inputborder" })
+                        </div>
+                    </div>
+                    <div class="form-group col-md">
+                        @Html.LabelFor(m => m.YearOfBirth, new { @class = "col-md control-label" })
+                        <div class="col-md">
+                            @Html.DropDownList("YearOfBirth", null, new { @class = "form-control inputborder" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.image, new { @class = "col-md control-label" })
+                    <div class="col-md">
+                        <input type="file" class="form-control inputborder" name="upload" />
+                        <span class="text-danger">@ViewBag.imgerr</span>
+                        @Html.ValidationMessageFor(m => m.image, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md">
+                        @Html.LabelFor(m => m.Email, new { @class = "col-md control-label" })
+                        <div class="col-md">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control inputborder" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group col-md">
+                        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md control-label" })
+                        <div class="col-md">
+                            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control inputborder" })
+                            @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CurrentPassword, htmlAttributes: new { @class = "control-label col-md" })
+                    <div class="col-md">
+                        @Html.EditorFor(model => model.CurrentPassword, new { htmlAttributes = new { @class = "form-control inputborder" } })
+                        @Html.ValidationMessageFor(model => model.CurrentPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md">
+                        @Html.LabelFor(model => model.NewPassword, htmlAttributes: new { @class = "control-label col-md" })
+                        <div class="col-md">
+                            @Html.EditorFor(model => model.NewPassword, new { htmlAttributes = new { @class = "form-control inputborder" } })
+                            @Html.ValidationMessageFor(model => model.NewPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md">
+                        @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md" })
+                        <div class="col-md">
+                            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control inputborder" } })
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.About, new { @class = "col-md control-label" })
+                    <div class="col-md">
+                        @Html.TextAreaFor(m => m.About, new { @class = "form-control inputborder" })
+                        @Html.ValidationMessageFor(m => m.About, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md">
+                        <input type="submit" value="تعديل الحساب" class="btn btn-warning my-2 w-100" />
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

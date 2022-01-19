@@ -1,0 +1,98 @@
+﻿
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'El Messiri', sans-serif;
+}
+.homecontainer {
+    background-color: #F0F8FF;
+}
+
+table {
+    box-shadow: 10px 10px 10px #8080802e;
+}
+.logo {
+    font-family: 'Qahiri', sans-serif;
+    font-size: 30px;
+}
+
+.signout{
+    color:white !important
+}
+.sidebarLink
+{
+    color :white !important ;
+}
+
+    .sidebarLink:hover {
+        color: #FFC107 !important
+    }
+
+.sidebarli:hover {
+    background-color: #191C1F;
+    box-shadow: 1px 1px 5px gray;
+}
+
+.jobsearch {
+    background-color: #EEF4F7;
+    border: 1px solid #EEF4F7;
+    box-shadow: 4px 6px 7px #808080;
+}
+
+    .jobsearch:hover {
+        border: 1px solid #ffc107;
+        background-color: white;
+    }
+
+    .jobsearch img {
+        width: 100%;
+        height: 200px;
+    }
+/*                            populer-categories                                  */
+section.populer-categories {
+    padding: 50px 0;
+}
+
+    section.populer-categories .item {
+        padding: 20px 0;
+        transition: 0.5s;
+        position: relative;
+        background-size: cover;
+        background-image: none;
+    }
+
+        section.populer-categories .item i {
+            color: #35434e;
+            font-size: 40px;
+            width: 75px;
+            height: 75px;
+            line-height: 75px;
+            border: 1px solid #e6e6e6;
+            border-radius: 50%;
+            background-color: transparent;
+            -webkit-transition: 0.5s;
+            -moz-transition: 0.5s;
+            -o-transition: 0.5s;
+            transition: 0.5s;
+        }
+
+        section.populer-categories .item .head h3 {
+            color: #0074ce;
+            text-transform: capitalize;
+            font-size: 20px;
+        }
+
+        section.populer-categories .item:hover i {
+            background-color: #35434e;
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+.brands {
+    background-color: #fafafa;
+    padding: 50px 0;
+}
+
+/* --------------------------------------------------------------------------- */

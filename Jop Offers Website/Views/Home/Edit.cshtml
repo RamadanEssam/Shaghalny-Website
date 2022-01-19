@@ -1,0 +1,65 @@
+﻿@model Jop_Offers_Website.Models.ApplyForJob
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row my-3">
+        <div class="col-md-8 mx-auto">
+            @using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4 class="text-center">تعديل الطلب</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.JobId)
+                @Html.HiddenFor(model => model.UserId)
+                @Html.HiddenFor(model => model.cv)
+
+
+                <div class="form-group text-center mb-2">
+                    @Html.LabelFor(model => model.JobId, "عنوان الوظيفه", htmlAttributes: new { @class = "control-label col-md" })
+                    <div class="col-md">
+                        @Model.job.JobTitle
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h6 class="text-center">اترك رساله الى الناشر (<span class="text-info">الرساله اختياريه</span>)</h6>
+                    <div class="col-md">
+                        @Html.TextAreaFor(model => model.Message, new { @class = "form-control", rows = "6" })
+                        @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h6 class="text-center mt-2"> ارفاق السيره الذاتيه(<span class="text-info">اختياريى</span>)</h6>
+                    <div class="col-md">
+                        <input class="form-control" name="cv" accept=".pdf" type="file" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class=" col-md">
+                        <input type="submit" value="حفظ التعديل" class="btn btn-warning w-100 mt-2" />
+                    </div>
+                </div>
+            </div>
+            }
+
+            <div>
+                @Html.ActionLink("الرجوع الى القائمه", "GetJobsByUser", null, new { @class = "btn btn-outline-warning my-2 w-100" })
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

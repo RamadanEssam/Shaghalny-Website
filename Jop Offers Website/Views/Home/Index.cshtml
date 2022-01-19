@@ -1,0 +1,116 @@
+﻿@using Microsoft.AspNet.Identity
+@using Jop_Offers_Website.Models
+@model IEnumerable<Jop_Offers_Website.Models.Category>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<!---->
+
+<section class="header vh-100 ">
+    <div class="layout  h-100">
+        <div class="container h-100 d-flex  align-items-center">
+            <div class="text-center mx-auto">
+                <h2 class=" logo text-warning" style="font-size:77px">شغلنى</h2>
+                <h2 class="text-white">
+                    موقع شغلنى الموقع رقم 1 للوظائف في مصر
+                </h2>
+                <h6 class=" text-white">
+                    شغلنى هيوصلك بوظائف خالية وفرص عمل في أكبر شركات مصر، مهما كانت مهاراتك،خبراتك أو مستوى تعليمك
+
+                </h6>
+                <p><a href="~/Home/About" class="btn btn-outline-warning">المزيد من التفاصيل &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!---->
+
+<div class="container ">
+    <h2 class="text-center my-5 text-dark jobsheader">الوظأئف المتاحه</h2>
+    <div id="test"  class="py-2 alert-info text-center w-50  ">
+
+    </div>
+    <div class="row mx-0 px-0 mt-2">
+        @foreach (var item in Model)
+        {
+            foreach (var item2 in item.Jobs)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="job bg-white text-secondary">
+                        <img src="~/Uploads/@item2.JobImage" class="card-img-top img-fluid">
+                        <div class="card-body position-relative bg-white">
+                            <h5 class="card-title text-dark">@item2.JobTitle</h5>
+                            <div class="row my-2">
+                                <div class="col">
+                                    <span><i class="fa fa-calendar text-warning"></i></span>
+                                    @item2.jobDate.ToString("ddd,dd,MMM,yyyy")
+                                </div>
+                                <div class="col">
+                                    <span><i class="fa fa-map-marker text-warning"></i></span>
+                                    @item2.Governorates.Name
+                                </div>
+                            </div>
+                            <p class="card-text">@item2.JobContent</p>
+
+                            @Html.ActionLink("التفاصيل", "Details", new { jobId = item2.Id }, new { @class = "btn btn-warning" })
+                            @if (Request.IsAuthenticated)
+                            {
+                                var Db = new ApplicationDbContext();
+                                var userID = User.Identity.GetUserId();
+                                var user = Db.Users.Where(a => a.Id == userID).SingleOrDefault();
+                                if (user.UserType == "الباحثون")
+                                {
+                                    <i  onclick="Save(@item2.Id)" class="fa  fa-bookmark text-warning saveicon  position-absolute" style="top:10px ; left:30px"></i>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<div class="attachmentDiv">
+    <div class="layout2  text-center row mx-0 py-5">
+
+        @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class = " col-lg-4 col-md-5 col-11 mx-auto my-md-5 my-2" }))
+        {
+            <h1 class=" logo text-warning">شغلنى</h1>
+            <h4 class="text-warning text-center">ابحث عن وظيفتك الان<span><i class="fa fa-search mx-2"></i></span></h4>
+            <input type="text" placeholder="ابحث هنا " class="form-control form-control-dark" name="searchName" id="searchName" />
+        }
+    </div>
+</div>
+
+<div class="bg-white">
+    @Html.Partial("_SuccessPartners")
+</div>
+
+@section scripts {
+
+    <script>
+        $("#test").hide();
+        function Save(jobid) {
+            $.ajax({
+                type: 'GET',
+                url: '/Home/SaveJob',
+                data: { id: jobid },
+                cache: false,
+                success: function (result) {
+                    
+                    $("#test").append(result);
+                    $("#test").show();
+                    setTimeout(function () {
+                        $("#test").empty();
+                        $("#test").hide();
+                    }, 2000);
+                }
+            });
+        }
+
+    </script>
+
+}

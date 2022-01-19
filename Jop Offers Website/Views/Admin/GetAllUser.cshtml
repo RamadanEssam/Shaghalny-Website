@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Jop_Offers_Website.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "GetAllUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h3 class="text-center mb-4">جميع المستخدمين</h3>
+<hr />
+@if (ViewBag.r == false)
+{
+<div class="alert alert-danger text-center">
+    <p class="text-center">@ViewBag.Con </p>
+    @Html.ActionLink("تأكيد الحذف", "DeleteUserConfirmed", new { id = @ViewBag.id }, new { @class = "btn btn-danger" })
+    @Html.ActionLink("رجوع", "GetAllUser", null, new { @class = "btn btn-outline-danger" })
+</div>
+}
+
+
+<table class="table table-hover text-center">
+    <tr class="table-dark text-warning ">
+
+        <th>
+
+        </th>
+        <th>
+            اسم المستخدم
+        </th>
+        <th>
+            البريد الالكترونى
+        </th>
+
+        <th>
+            رقم الموبايل
+        </th>
+        <th>
+            نوع الحساب
+        </th>
+        <th>
+            سنه الميلاد
+        </th>
+        <th>
+            المحافظه التابع لها
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="~/Uploads/users/@item.image" class="rounded-circle" style="width:50px ; height:50px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.UserType)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.YearOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Governorate)
+            </td>
+            <td>
+                <div class=" my-auto my-auto text-center py-3">
+                    <a href="~/Admin/DeleteUser/@item.Id"><i class="fa fa-user-times text-danger fa-2x"></i></a>
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>

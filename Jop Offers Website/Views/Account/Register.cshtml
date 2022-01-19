@@ -1,0 +1,112 @@
+﻿@model Jop_Offers_Website.Models.RegisterViewModel
+@{
+    ViewBag.Title = "تسحيل الاشتراك";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-lg-8 mx-auto py-md-4 px-md-5  my-md-3 myformstyle">
+
+            <div class="text-center">
+                <h2 class=" logo text-warning mt-2">شغلنى</h2>
+                <p>الموقع رقم 1 للوظائف في مصر</p>
+                <h3>انشاء حساب جديد</h3>
+            </div>
+
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <hr />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserName, new { @class = "col-md control-label" })
+                    <div class="col-md">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control inputborder", placeholder = "ادخل اسمك" })
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md">
+                        @Html.LabelFor(m => m.Usertype, new { @class = "col-md control-label" })
+                        <div class="col-md">
+                            @Html.DropDownList("Usertype", null, new { @class = "form-control inputborder" })
+                        </div>
+                    </div>
+                    <div class="form-group col-md">
+                        @Html.LabelFor(m => m.Governorate, new { @class = "col-md control-label" })
+                        <div class="col-md">
+                            @Html.DropDownList("Governorate", null, new { @class = "form-control inputborder" })
+                        </div>
+                    </div>
+                    <div class="form-group col-md">
+                        @Html.LabelFor(m => m.YearOfBirth, new { @class = "col-md control-label" })
+                        <div class="col-md">
+                            @Html.DropDownList("YearOfBirth", null, new { @class = "form-control inputborder" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.image, new { @class = "col-md control-label" })
+                    <div class="col-md">
+                        <input type="file" class="form-control inputborder" placeholder="قم باختيار صوره" name="upload" />
+                        <span class="text-danger">@ViewBag.imgerr</span>
+                        @Html.ValidationMessageFor(m => m.image, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md">
+                        @Html.LabelFor(m => m.Email, new { @class = "col-md control-label" })
+                        <div class="col-md">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control inputborder", placeholder = "بريدك الالكترونى" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group col-md">
+                        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md control-label" })
+                        <div class="col-md">
+                            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control inputborder", placeholder = "رقم المحمول" })
+                            @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md control-label" })
+                        <div class="col-md">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control inputborder", placeholder = "كلمه السر" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group col-md">
+                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md control-label" })
+                        <div class="col-md">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control inputborder", placeholder = "تأكيد كلمه السر" })
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.About, new { @class = "col-md control-label" })
+                    <div class="col-md">
+                        @Html.TextAreaFor(m => m.About, new { @class = "form-control inputborder", placeholder = "اكتب نبذه مختصره عنك" })
+                        @Html.ValidationMessageFor(m => m.About, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class=" col-md my-3">
+                        <input type="submit" class="btn btn-warning w-100" value="تسجيل " />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

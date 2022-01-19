@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Jop_Offers_Website.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3 class="text-center mb-4">جميع اصناف الوطائف</h3>
+<hr />
+<p class="text-center">
+    @Html.ActionLink("اضافه نوع جديد", "Create" , null , new {@class = "btn btn-warning " })
+</p>
+
+@if (ViewBag.catId != null)
+{
+<div class="alert alert-danger text-center">
+    <p class="text-center">@ViewBag.message</p>
+    @Html.ActionLink("تأكيد الحذف", "DeleteConfirmed", new { id = @ViewBag.catId }, new { @class = "btn btn-outline-danger" })
+    @Html.ActionLink("رجوع", "Index", "Categories", null, new { @class = "btn btn-outline-danger" })
+</div>
+}
+<table class="table table-hover text-center">
+    <tr class="table-dark text-warning ">
+        <th>
+            @Html.DisplayNameFor(model => model.CatogryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CatogryDescription)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CatogryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CatogryDescription)
+            </td>
+            <td>
+               <div class="row">
+                   <div class=" col my-auto">
+                       <a href="@Url.Action("Edit", "Categories" , new { id = item.Id } )">
+                           <i class='fa fa-edit text-info fa-2x'></i>
+                       </a>
+                   </div>
+                   <div class=" col my-auto">
+                       <a href="@Url.Action("Delete", "Categories" , new { id = item.Id } )">
+                           <i class='fa fa-trash text-danger fa-2x '></i>
+                       </a>
+                   </div>
+               </div>
+                @*@Html.ActionLink("تعديل", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("حذف", "Edit", new { id = item.Id })*@
+            </td>
+        </tr>
+    }
+
+</table>

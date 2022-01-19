@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Jop_Offers_Website.Models.ApplyForJob>
+
+@{
+    ViewBag.Title = "GetAllApplyForJobs";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-center mb-4">جميع الطلبات المقدمه على الوظائف</h2>
+<hr />
+<table class="table table-hover text-center">
+    <tr class="table-dark text-warning">
+        <th>
+           اسم الوظيفه
+        </th>
+        <th>
+            اسم المتقدم
+        </th>
+        <th>
+            تاريخ التقدم
+        </th>
+        <th>
+           الرساله
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.job.JobTitle
+        </td>
+        <td>
+            @item.user.UserName
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplyDate)
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Message)
+        </td>
+        <td>
+            <a href="@Url.Action("DeleteApply", "Admin" , new { id = item.Id } )">
+                <i class='fa fa-trash text-danger fa-2x'></i>
+            </a>
+        </td>
+    </tr>
+}
+
+</table>

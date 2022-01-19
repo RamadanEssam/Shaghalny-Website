@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Jop_Offers_Website.Models.Job>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<div class="container">
+    <h5 class="text-center my-4">    نتائج البحث @Model.Count()</h5>
+    <div class="row mx-0 px-0 mt-2">
+        @if (Model != null)
+        {
+            foreach (var item2 in Model)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="job bg-white text-secondary">
+                        <img src="~/Uploads/@item2.JobImage" class="card-img-top img-fluid">
+                        <div class="card-body bg-white">
+                            <h5 class="card-title text-dark">@item2.JobTitle</h5>
+                            <div class="row my-2">
+                                <div class="col">
+                                    <span><i class="fa fa-calendar text-warning"></i></span>
+                                    @item2.jobDate.ToString("ddd,dd,MMM,yyyy")
+                                </div>
+                                <div class="col">
+                                    <span><i class="fa fa-map-marker text-warning"></i></span>
+                                    @item2.Governorates.Name
+                                </div>
+                            </div>
+                            <p class="card-text">@item2.JobContent</p>
+
+                            @Html.ActionLink("التفاصيل", "Details", new { jobId = item2.Id }, new { @class = "btn btn-warning" })
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
+</div>

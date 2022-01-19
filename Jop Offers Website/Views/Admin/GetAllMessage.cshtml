@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Jop_Offers_Website.Models.MessageModel>
+
+@{
+    ViewBag.Title = "GetAllMessage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3 class="text-center mb-4">جميع الرسائل</h3>
+<hr />
+@foreach (var item in Model)
+{
+    <div class="jobsearch row my-2 mx-2">
+        <div class="col-md-3 mx-0 px-0 text-center d-flex flex-column align-content-around">
+            <div class="my-md-auto ">
+                <img src="~/Uploads/users/@item.user.image" class="" />
+            </div>
+        </div>
+        <div class="col-md p-3 d-flex flex-column align-content-around">
+            <div class="row my-auto">
+                <div class="col-lg-3 col-4 px-lg-3 ">
+                    <span class="">عنوان الرساله </span>
+                </div>
+                <div class="col-lg-9 col-8 text-secondary">
+                    <h6> <span class="text-warning">:</span> @item.Subject</h6>
+                </div>
+                <div class="col-lg-3 col-4 px-lg-3">
+                    <span class="">نص الرساله</span>
+                </div>
+                <div class="col-lg-9 col-8 text-secondary">
+                    <h6> <span class="text-warning">:</span>@item.Message</h6>
+                </div>
+                <div class="col-lg-3 col-4 px-lg-3">
+                    <span class="">الراسل</span>
+                </div>
+                <div class="col-lg-9 col-8 text-secondary">
+                    <h6> <span class="text-warning">:</span>@item.Name</h6>
+                </div>
+                <div class="col-lg-3 col-4 px-lg-3">
+                    <span class="">رقم المحمول </span>
+                </div>
+                <div class="col-lg-9 col-8 text-secondary">
+                    <h6> <span class="text-warning">:</span>@item.PhoneNumber</h6>
+                </div>
+            </div>
+        </div>
+        <div class=" col-md-2 py-3 text-center d-flex flex-column align-content-around">
+            @Html.ActionLink("Delete", "DeletMessaga", new { id = item.Id }, new { @class = "btn btn-danger my-auto" })
+        </div>
+    </div>
+}
+

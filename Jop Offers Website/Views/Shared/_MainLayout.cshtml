@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <!--الخط المستخدم فى الصفحات-->
+    <link href="https://fonts.googleapis.com/css?family=El+Messiri" rel="stylesheet">
+    <!-- لينكات الخط بتاع اللوجو-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Qahiri&display=swap" rel="stylesheet">
+    <!---->
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/">
+
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body class="d-flex flex-column vh-100 homecontainer">
+
+    <!--start Navbar-->
+    <nav class=" navbar-expand-lg navbar navbar-dark bg-dark ">
+        <div class="container">
+            <a class="navbar-brand logo text-warning" href="~/Home">شغلنى</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between py-lg-2" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-lg-0 justify-content-between">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="~/Home">الرئيسيه</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="~/Home/About"> حول الموقع</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active " aria-current="page" href="~/Message/Create">تواصل معنا</a>
+                    </li>
+                    <li class="nav-item mx-lg-5">
+                        @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class = "mx-lg-auto" }))
+                        {
+                            <input type="text" placeholder="ابحث هنا " class="form-control form-control-dark" name="searchName" id="searchName" />
+                        }
+                    </li>
+                </ul>
+                <!--partial login-->
+                @Html.Partial("_loginPartial")
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar-->
+
+    <div class="">
+        <div class="">
+            @RenderBody()
+        </div>
+    </div>
+    <!-- Start footer-->
+    <footer class="footer mt-auto  py-3 myfooter px-0 pb-0 ">
+        <div class="container">
+            <div class="row m-0 p-0">
+                <div class="col-md-6">
+                    <h6 class="mb-3 text-warning">من نحن ؟</h6>
+                    <p class=""> وظائف في المبيعات، والمحاسبة، والتسويق، والتكنولوجيا، والموارد البشرية، والبنوك، وغيرها. انضم إلى أكبر موقع للوظائف في الشرق الأوسط وتقدم إلى الوظائف عبر الإنترنت مجاناً وبسهولة. أحدث الوظائف الشاغرة. أكبر موقع عربي للوظائف.</p>
+                </div>
+                <div class="col-md">
+                    <h6 class="mb-3 text-warning">روابط هامه </h6>
+                    @Html.Partial("_FooterLink")
+                </div>
+                <div class="col-md">
+                    <h6 class="mb-3 text-warning">تواصل معنا </h6>
+                    <ul class=" px-0">
+                        <li><a href="#"><i class="fa fa-facebook-f text-warning mx-1"></i>صفحتنا على الفيسبوك</a></li>
+                        <li><a href="#"><i class="fa fa-twitter text-warning mx-1"></i>تابعنا على تويتر</a></li>
+                        <li><a href="#"><i class="fa fa-youtube text-warning mx-1"></i>شاهدنا على اليوتيوب</a></li>
+                        <li><a href="~/Message/Create"><i class="fa fa-envelope-open  text-warning mx-1"></i>اترك لنا رساله</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="subfooter py-1 text-center">
+            <span>جميع الحقوق محفوظه لموقع <a class="logo text-warning " href="~/Home">شغلنى</a> </span>
+        </div>
+    </footer>
+    <!--End Footer-->
+
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+    <script src="~/bundles/jquery"></script>
+    @RenderSection("scripts", required: false)
+    
+</body>
+</html>

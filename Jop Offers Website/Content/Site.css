@@ -1,0 +1,184 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-family: 'El Messiri', sans-serif;
+}
+.homecontainer {
+    background-color: #F0F8FF;
+}
+
+.logo {
+
+    font-family: 'Qahiri', sans-serif;
+    font-size:33px ;
+}
+
+.saveicon{
+    cursor: pointer
+}
+/*home*/
+.header {
+    
+    background-image: url('../images/pexels-daria-shevtsova-1560932.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.layout {
+    background-color: #000000bd
+}
+.jobsheader {
+    text-shadow: 5px 5px 6px #80808099
+}
+.job {
+    box-shadow: 0px 4px 7px #8080803b;
+    height:100%;
+}
+.job img 
+{
+    height:300px
+}
+.attachmentDiv {
+    background-image: url('../images/banner-3.jpg');
+    background-attachment:fixed;
+}
+.layout2 {
+    background-color: #00000094;
+}
+/*homr*/
+.dropdown-menu {
+    width: 243px;
+    background-color: #212529;
+    border: 1px solid #ffc107;
+    padding: 5px;
+}
+
+.myformstyle {
+    background-color: #EEF4F7;
+    box-shadow: 5px 5px 5px #80808063;
+}
+
+    .myformstyle .logo {
+        font-size: 50px;
+        text-shadow: 0px 0px 6px black;
+    }
+
+.editepageimg {
+    width: 100px;
+    height: 100px;
+    box-shadow: 0px 0px 10px #96959e
+}
+.jobsearch img {
+        width: 100%;
+        height: 200px;
+    }
+
+#test {
+    position: fixed;
+    top: 5px;
+    left:25%;
+    z-index: 999;
+}
+/* الانبوت بتاع البحث */
+.form-control-dark {
+    color: #fff;
+    background-color: var(--bs-dark);
+    border-color: var(--bs-gray);
+}
+
+    .form-control-dark:focus {
+        color: #fff;
+        background-color: var(--bs-dark);
+        border-color: #ffc107;
+        box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
+    }
+.inputborder:focus {
+    border-color: #ffc107;
+    box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
+}
+/*About*/
+.triangle {
+    position: relative;
+    background: #2c3e50;
+}
+
+    .triangle::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 20px 20px 0 20px;
+        border-color: #2c3e50 transparent transparent transparent;
+        left: 50%;
+        transform: translateX(-50%) translateY(100%);
+    }
+/*                                      how work                        */
+.how-work {
+    padding: 35px 0;
+}
+
+    .how-work .item {
+        text-align: right;
+    }
+
+        .how-work .item i {
+            color: #2C3E50;
+            margin-bottom: 20px;
+            font-size: 26px;
+        }
+
+        .how-work .item h4 {
+            font-weight: bold;
+            font-size: 15px;
+            position: relative;
+            padding: 0 0 15px;
+        }
+
+            .how-work .item h4::after {
+                content: " ";
+                position: absolute;
+                bottom: 0;
+                width: 70px;
+                height: 2px;
+                background-color: #FFCA2C;
+                right: 0;
+            }
+
+section.how-work .item p {
+    padding: 0;
+    font-size: 14px;
+}
+
+.how-work img{
+    max-height:438px;
+}
+/*end About*/
+/*footer*/
+.myfooter {
+    background-color: #101325;
+    padding: 10px;
+}
+
+.subfooter {
+    width: 100%;
+    background-color: #212529;
+    color: white;
+    text-align: center;
+}
+
+.myfooter a {
+    color: #acb1b1;
+    text-decoration: none;
+}
+.myfooter p {
+    color: #6f6f6f;
+    padding-left:10px ;
+}
+.myfooter ul
+{
+    list-style-type:none;
+    list-style-position:inside;
+}
+
+/*end footer*/

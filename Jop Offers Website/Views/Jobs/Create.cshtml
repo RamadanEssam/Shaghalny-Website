@@ -1,0 +1,153 @@
+﻿@model Jop_Offers_Website.Models.Job
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<div class="container">
+
+    <div class="row">
+        <div class=" col-lg-7 col-md-8 mx-auto myformstyle mt-md-3 px-4 py-2 my-0 mb-md-3">
+            @using (Html.BeginForm("Create", "Jobs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <h3 class="mt-2 text-center">انشاء وظيفه جديده</h3>
+                if (ViewBag.message != null)
+                {
+                    if (ViewBag.message == "تم رفع الوظيفه بنجاح")
+                    {
+                        <div class="alert alert-success py-2 text-center mb-2">
+                            @ViewBag.message
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-danger py-2 text-center mb-2">
+                            @ViewBag.message
+                        </div>
+                    }
+                }
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    
+                    <!---->
+
+                <div class="row mx-0 px-0">
+
+                    <div class="form-group col-12">
+                        @Html.LabelFor(model => model.JobTitle, htmlAttributes: new { @class = "control-label col-md" })
+                        <div class="col-md">
+                            @Html.EditorFor(model => model.JobTitle, new { htmlAttributes = new { @class = "form-control inputborder", @placeholder = "عنوان الوظيفه" } })
+                            @Html.ValidationMessageFor(model => model.JobTitle, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                   
+
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.MinSalary, htmlAttributes: new { @class = "control-label col-md" })
+                            <div class="col-md">
+                                @Html.EditorFor(model => model.MinSalary, new { htmlAttributes = new { @class = "form-control inputborder", @placeholder = "الحد الادنى للمرتب" } })
+                                @Html.ValidationMessageFor(model => model.MinSalary, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.MaxSalary, htmlAttributes: new { @class = "control-label col-md" })
+                            <div class="col-md">
+                                @Html.EditorFor(model => model.MaxSalary, new { htmlAttributes = new { @class = "form-control inputborder", @placeholder = "الحد الاعلى للمرتب" } })
+                                @Html.ValidationMessageFor(model => model.MaxSalary, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.MinAge, htmlAttributes: new { @class = "control-label col-md" })
+                            <div class="col-md">
+                                @Html.EditorFor(model => model.MinAge, new { htmlAttributes = new { @class = "form-control inputborder", @placeholder = "الحد الادنى للسن" } })
+                                @Html.ValidationMessageFor(model => model.MinAge, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.MaxAge, htmlAttributes: new { @class = "control-label col-md" })
+                            <div class="col-md">
+                                @Html.EditorFor(model => model.MaxAge, new { htmlAttributes = new { @class = "form-control inputborder", @placeholder = "الحد الاعلى للسن" } })
+                                @Html.ValidationMessageFor(model => model.MaxAge, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                   
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.ExperienceId, "مستوى الخبره المطلوب", htmlAttributes: new { @class = "control-label col-md" })
+                            <div class="col-md">
+                                @Html.DropDownList("ExperienceId", null, htmlAttributes: new { @class = "form-control inputborder" })
+                                @Html.ValidationMessageFor(model => model.ExperienceId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.QualificationId, "المؤهل الدراسى", htmlAttributes: new { @class = "control-label col-md" })
+                            <div class="col-md">
+                                @Html.DropDownList("QualificationId", null, htmlAttributes: new { @class = "form-control inputborder" })
+                                @Html.ValidationMessageFor(model => model.QualificationId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.GenderId, "الجنس المطلوب", htmlAttributes: new { @class = "control-label col-md" })
+                            <div class="col-md">
+                                @Html.DropDownList("GenderId", null, htmlAttributes: new { @class = "form-control inputborder" })
+                                @Html.ValidationMessageFor(model => model.GenderId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.GovernoratesId, "محافظه ", htmlAttributes: new { @class = "control-label col-md" })
+                            <div class="col-md">
+                                @Html.DropDownList("GovernoratesId", null, htmlAttributes: new { @class = "form-control inputborder" })
+                                @Html.ValidationMessageFor(model => model.GovernoratesId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                   
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.JobImage, htmlAttributes: new { @class = "control-label col-md" })
+                            <div class="col-md">
+                                <input type="file" class="form-control inputborder" name="upload" />
+                                <span class="text-danger">@ViewBag.imgerr</span>
+                                @Html.ValidationMessageFor(model => model.JobImage, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.CategoryId, "نوع الوظيفه", htmlAttributes: new { @class = "control-label col-md" })
+                            <div class="col-md">
+                                @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control inputborder" })
+                                @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    
+                    <div class="form-group col-12">
+                        @Html.LabelFor(model => model.JobContent, htmlAttributes: new { @class = "control-label col-md" })
+                        <div class="col-md">
+                            @Html.TextAreaFor(model => model.JobContent, new { @class = "form-control inputborder", @rows = "5" , @placeholder = "تفاصيل الوظيفه"})
+                            @Html.ValidationMessageFor(model => model.JobContent, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group col-12">
+                        <div class=" col-md">
+                            <input type="submit" value="انشاء" class="btn btn-warning w-100 my-2" />
+                        </div>
+                    </div>
+                </div>
+                   
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<section class="populer-categories">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center header">
+                <h2>لوحه التحكم</h2>
+                <p>يمكن من هنا اداره الموقع بالكامل</p>
+                <hr />
+            </div>
+            <div class="col-md row">
+                <div class=" col-md-4 item text-center">
+                    <div class=" mb-4">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <div class=" head">
+                        <h3>مستخدمى الموقع</h3>
+                    </div>
+                    <div class="">
+                        <p>@ViewBag.countuser مستخدم</p>
+                    </div>
+                </div>
+                <div class=" col-md-4 item text-center">
+                    <div class=" mb-4">
+                        <i class="fa fa-user-plus"></i>
+                    </div>
+                    <div class=" head">
+                        <h3> الناشرون</h3>
+                    </div>
+                    <div class="">
+                        <p>@ViewBag.publisher ناشر</p>
+                    </div>
+                </div>
+                <div class=" col-md-4 item text-center">
+                    <div class=" mb-4">
+                        <i class="fa fa-search"></i>
+                    </div>
+                    <div class=" head">
+                        <h3>الباحثون</h3>
+                    </div>
+                    <div class="">
+                        <p>@ViewBag.Searcher باحث</p>
+                    </div>
+                </div>
+                <div class=" col-md-4 item text-center">
+                    <div class=" mb-4">
+                        <i class="fa fa-globe"></i>
+                    </div>
+                    <div class=" head">
+                        <h3>الوظائف المتاحه</h3>
+                    </div>
+                    <div class="">
+                        <p>@ViewBag.jobs وظيفه</p>
+                    </div>
+                </div>
+                <div class=" col-md-4 item text-center">
+                    <div class=" mb-4">
+                        <i class="fa fa-envelope-open"></i>
+                    </div>
+                    <div class=" head">
+                        <h3>الرسائل</h3>
+                    </div>
+                    <div class="">
+                        <p>@ViewBag.Message رساله</p>
+                    </div>
+                </div>
+                <div class=" col-md-4 item text-center">
+                    <div class=" mb-4">
+                        <i class="fa fa-folder-open"></i>
+                    </div>
+                    <div class=" head">
+                        <h3>الطلبات المقدمه </h3>
+                    </div>
+                    <div class="">
+                        <p>@ViewBag.Apply طلب</p>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    </div>
+</section>

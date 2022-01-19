@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Jop_Offers_Website.Models.Job>
+
+@{
+    ViewBag.Title = "GetAllJobs";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3 class="text-center mb-4">جميع الوظائف الموجوده فى الموقع</h3>
+<hr />
+@if (ViewBag.jobid != null)
+{
+    <div class="alert alert-danger">
+        <p class="text-center">@ViewBag.message</p>
+        @Html.ActionLink("تأكيد الحذف", "ConfirmDeleteJob", new { jobid = @ViewBag.jobid })
+    </div>
+}
+
+@foreach (var item in Model)
+{
+    <div class="jobsearch row my-2 mx-2">
+        <div class="col-md-3 mx-0 px-0 text-center d-flex flex-column align-content-around">
+            <div class="my-md-auto ">
+                <img src="~/Uploads/@item.JobImage" class="" />
+            </div>
+        </div>
+        <div class="col-md p-3 d-flex flex-column align-content-around">
+            <div class="row my-auto">
+                <div class="col-lg-3 col-4 px-lg-3 ">
+                    <span class="">عنوان الوظيفه </span>
+                </div>
+                <div class="col-lg-9 col-8 text-secondary">
+                    <h6> <span class="text-warning">:</span> @item.JobTitle</h6>
+                </div>
+                <div class="col-lg-3 col-4 px-lg-3">
+                    <span class="">تفاصيل الوظيفه</span>
+                </div>
+                <div class="col-lg-9 col-8 text-secondary">
+                    <h6> <span class="text-warning">:</span>@item.JobContent</h6>
+                </div>
+                <div class="col-lg-3 col-4 px-lg-3">
+                    <span class="">الناشر</span>
+                </div>
+                <div class="col-lg-9 col-8 text-secondary">
+                    <h6> <span class="text-warning">:</span>@item.User.UserName</h6>
+                </div>
+                <div class="col-lg-3 col-4 px-lg-3">
+                    <span class="">تاريخ النشر </span>
+                </div>
+                <div class="col-lg-9 col-8 text-secondary">
+                    <h6> <span class="text-warning">:</span>@item.jobDate.ToString("dddd,dd MMMM yyyy")</h6>
+                </div>
+            </div>
+
+        </div>
+        <div class=" col-md-2 py-3 text-center d-flex flex-column align-content-around">
+            @Html.ActionLink("Details", "DetialsJob", new { id = item.Id }, new { @class = "btn btn-warning my-auto" }) 
+            @Html.ActionLink("Delete", "DeleteJob", new { id = item.Id }, new { @class = "btn btn-danger my-auto" })
+        </div>
+    </div>
+}
+
+
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.category.CatogryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.UserType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobContent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.jobDate)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category.CatogryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.UserType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobContent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobImage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.jobDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "DetialsJob", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "DeleteJob", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>*@

@@ -1,0 +1,74 @@
+﻿@using Microsoft.AspNet.Identity
+@using Jop_Offers_Website.Models
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        var Db = new ApplicationDbContext();
+        var userID = User.Identity.GetUserId();
+        var user = Db.Users.Where(a => a.Id == userID).SingleOrDefault();
+
+<div class="d-flex">
+
+    <div class="dropdown mx-3  my-auto">
+        <button class="btn btn-outline-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <span>مرحبا بك يا  : @user.UserName</span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="right:0">
+            <li>
+                <div class="row">
+                    <div class="col-lg">
+                        @if (user.UserType == "الناشرون")
+                        {
+                            <a href="~/Jobs/Create" class="btn btn-outline-warning my-1 w-100">نشر وظيفه جديده</a>
+                            <a href="~/Home/GetAllPublisherJobs" class="btn btn-outline-warning my-1 w-100">الوظائف التى قمت بنشرها</a>
+                            <a href="~/Home/GetJobsByPublisher" class="btn btn-outline-warning my-1 w-100 ">الطلبات المقدمه على الوظائف</a>
+                            <a href="~/Account/EditeProfile" class="btn btn-warning w-100 mt-1">تعديل الحساب</a>
+                        }
+                        else if (user.UserType == "الباحثون")
+                        {
+                            <a href="~/Home/GetJobsByUser" class="btn btn-outline-warning my-2 w-100">الوظائف التى تقدمت اليها</a>
+                            <a href="~/Home/SavedJobs" class="btn btn-outline-warning my-2 w-100">الوظائف التى قمت بحفظها</a>
+                            <a href="~/Account/EditeProfile" class="btn btn-warning w-100 mt-1">تعديل الحساب</a>
+                        }
+                        else
+                        {
+                            <a href="~/Admin/Index" class="btn btn-outline-warning my-2 w-100">لوحه التحكم</a>
+                        }
+                    </div>
+
+                </div>
+            </li>
+            @*<li>
+                <a href="~/Account/EditeProfile" class="btn btn-warning w-100 mt-1">تعديل الحساب</a>
+            </li>*@
+            <li>
+                <a class=" btn btn-danger w-100 my-1" href="javascript:document.getElementById('logoutForm').submit()">تسجيل الخروج</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="">
+        @if (user.image != null)
+        {
+            <img src="~/Uploads/users/@user.image" class=" rounded-circle" style="width:50px ; height:50px" />
+        }
+        else
+        {
+            <span class="text-white">الصوره</span>
+
+        }
+    </div>
+
+</div>
+
+        @Html.AntiForgeryToken()
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("الاشتراك", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-warning mb-1", id = "registerLink" })</li>
+        <li>@Html.ActionLink("تسجيل الدخول", "Login", "Account", routeValues: null, htmlAttributes: new { @class = " btn btn-outline-light mx-lg-2 mb-1", id = "loginLink" })</li>
+    </ul>
+}

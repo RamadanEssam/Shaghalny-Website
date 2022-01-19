@@ -1,0 +1,17 @@
+﻿@using Jop_Offers_Website.Models
+
+
+@{var Db = new ApplicationDbContext();
+    var cat = Db.Categories.ToList();
+}
+
+<ul class="px-0">
+    @foreach (var item in cat)
+    {
+        <li>
+            <a href="@Url.Action("GetJobsByCat", "Home" , new { cat = item.CatogryName })">
+                @item.CatogryName
+            </a>
+        </li>
+    }
+</ul>

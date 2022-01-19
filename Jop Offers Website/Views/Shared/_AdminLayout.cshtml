@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.83.1">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <!--الخط المستخدم فى الصفحات-->
+    <link href="https://fonts.googleapis.com/css?family=El+Messiri" rel="stylesheet">
+    <!-- لينكات الخط بتاع اللوجو-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Qahiri&display=swap" rel="stylesheet">
+    <!---->
+    <link href="~/Content/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="~/Content/dashboard.rtl.css" rel="stylesheet" />
+    <link href="~/Content/DashbordStyle.css" rel="stylesheet" />
+
+</head>
+<body class="homecontainer">
+
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 logo text-warning text-center" href="~/Home/Index">شغلنى</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="w-100 bg-dark"></div>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                <a class="nav-link btn btn-outline-warning px-2 my-lg-0 my-1 signout" href="javascript:document.getElementById('logoutForm').submit()"> <i class="fa fa-sign-out mx-2"></i>تسحيل الخروج</a>
+            }
+            </li>
+        </ul>
+    </header>
+   
+    <div class="container-fluid ">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark  sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item ">
+                            <a class="nav-link active text-warning" aria-current="page" href="~/Admin/Index">
+                               لوحه التحكم
+                            </a>
+                        </li>
+                        <li class="nav-item sidebarli">
+                            <a class="nav-link sidebarLink" href="~/Admin/GetAllUser">
+                                كل المستخدمون
+                            </a>
+                        </li>
+                        <li class="nav-item sidebarli">
+                            @Html.ActionLink("كل الباحثون عن وظائئف", "GetUserByType", "Admin", new { type = "الباحثون" , test ="S" } , new {@class = "nav-link sidebarLink" })
+                        </li>
+                        <li class="nav-item sidebarli">
+                            @Html.ActionLink(" كل الناشرون للوظائف", "GetUserByType", "Admin", new { type = "الناشرون" , test = "P" }, new { @class = "nav-link sidebarLink" })
+                        </li>
+                        <li class="nav-item sidebarli">
+                            @Html.ActionLink("كل الوظائف", "GetAllJobs", "Admin", null , new { @class = "nav-link sidebarLink" })
+                        </li>
+                        <li class="nav-item sidebarli">
+                            <a class="nav-link sidebarLink" href="~/Admin/GetAllMessage">
+                               رسائل المستخدمين
+                            </a>
+                        </li>
+                        <li class="nav-item sidebarli">
+                            <a class="nav-link sidebarLink" href="~/Categories/Index">
+                                انواع الوظائف
+                            </a>
+                        </li>
+                        <li class="nav-item sidebarli">
+                            @Html.ActionLink("الطلبات المقدمه على الوظائف", "GetAllApplyForJobs", "Admin", null, new { @class = "nav-link sidebarLink" })
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 vh-100 homecontainer">
+                <div class="pt-5">
+                    @RenderBody()
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+    <script src="~/bundles/jquery"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
